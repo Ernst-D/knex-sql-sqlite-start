@@ -1,0 +1,1 @@
+docker exec -i postgres_test_db psql -U postgres -d test_db < seed.sql
