@@ -1,0 +1,1 @@
+docker exec -t $CONTAINER_NAME pg_restore -U postgres -d new_db /database_dump.dump

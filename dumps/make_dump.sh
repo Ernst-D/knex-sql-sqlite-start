@@ -1,0 +1,1 @@
+docker exec -t $CONTAINER_NAME pg_dump --clean -U postgres -d new_db -Fc > database_dump.dump
