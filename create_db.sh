@@ -1,1 +1,0 @@
-docker exec -i postgres_test_db psql -U postgres < create_db.sql

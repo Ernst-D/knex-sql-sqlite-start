@@ -1,1 +1,0 @@
-docker exec -it postgres_test_db psql -U postgres
