@@ -4,7 +4,7 @@ import knex, { Knex } from "knex";
 import { envConfig } from "../db/configs/config.db";
 import { TestTable } from "../types";
 
-t.describe("database suite", async () => {
+t.describe("database suite for parallel run", async () => {
     let db: Knex;
     const env = process.env.NODE_ENV || "dev";
     const dbConfig = envConfig[env];
@@ -27,21 +27,11 @@ t.describe("database suite", async () => {
         db.destroy()
     })
 
-    t.test("can query last user from TestTable", async () => {
-        const firstEntry = await db.select("*").from<TestTable>("TestTable").first();
-        assert.equal(firstEntry.id, 1);
-    })
-
     t.test("length of entries should be 4 after first entry remove", async ()=>{
         const del = await db<TestTable>("TestTable").where("id",1).del();
         assert.equal(del,1);
 
         const length = (await db<TestTable>("TestTable")).length;
         assert.equal(length,4)
-    })
-
-    t.test("length of db should be 5", async ()=>{
-        const length = (await db<TestTable>("TestTable")).length
-        assert.equal(length,5)
     })
 })
