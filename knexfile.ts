@@ -14,7 +14,9 @@ const config: { [key: string]: Knex.Config } = {
     },
     seeds: {
       directory:"./db/seeds"
-    }
+    },
+    // sqlite does not support inserting default values. Set the `useNullAsDefault` flag to hide this warning. (see docs https://knexjs.org/guide/query-builder.html#insert).
+    useNullAsDefault: true,
   },
 
   staging: {
